@@ -1,0 +1,2 @@
+D:/Sdk/Projects/we_chat/android/app/.cxx/Debug/v536h2t2/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Sdk/Projects/we_chat/android/app/.cxx/Debug/v536h2t2/arm64-v8a/CMakeFiles/rebuild_cache.dir

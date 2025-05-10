@@ -38,6 +38,8 @@ dependencies:
   get:
   dartz:
   get_it:
+  emoji_picker_flutter: ^1.6.1
+  image_picker:
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,7 +1,7 @@
 class ChatUserModel {
   final String id;
-  final String name;
-  final String email;
+  String name;
+  String email;
   final String? image;
   final String? about;
   final String? lastActive;

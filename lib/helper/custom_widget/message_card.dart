@@ -24,7 +24,6 @@ class _MessageCardState extends State<MessageCard> {
 
   Widget _blueMessage() {
 
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [

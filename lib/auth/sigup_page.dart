@@ -5,7 +5,6 @@ import 'package:we_chat/helper/custom_widget/helper.dart';
 import 'package:we_chat/helper/custom_widget/myRoundedCstBtn.dart';
 import 'package:we_chat/helper/dimension.dart';
 import 'package:we_chat/helper/routes.dart';
-import 'package:we_chat/screens/HomeScreen.dart';
 import '../helper/custom_widget/app_apis.dart';
 import '../service_locator.dart';
 
@@ -79,8 +78,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'First Name',
+                              Text('First Name',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: AppDimension.font15),
@@ -89,8 +87,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 height: AppDimension.height50,
                                 child: TextFormField(
                                   controller: fNameController,
-                                  decoration: getInputTextFieldDecoration(
-                                      hint: 'Enter name'),
+                                  decoration: getInputTextFieldDecoration(hint: 'Enter name'),
                                   validator: (value) => value!.isEmpty
                                       ? 'Please enter first name'
                                       : null,
@@ -104,8 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Last Name',
+                              Text('Last Name',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: AppDimension.font15),
@@ -207,8 +203,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           var email = emailController.text.trim();
                           var password = passwordController.text.trim();
                           var confirm = confirmPassController.text.trim();
-                          var fullName =
-                              '$firstName $lastName'; // spacing added
+                          var fullName = '$firstName $lastName'; // spacing added
 
                           if (firstName.isNotEmpty &&
                               lastName.isNotEmpty &&
@@ -235,10 +230,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                   Navigator.pushNamed(
                                       context, AppRoutes.homePage);
                                 } else {
-                                  await AppApis.createUser(fullName)
-                                      .then((value) {
-                                    Navigator.pushNamed(
-                                        context, AppRoutes.homePage);
+                                  await AppApis.createUser(fullName).then((value) {
+                                    Navigator.pushNamed(context, AppRoutes.homePage);
                                   });
                                 }
                               });
@@ -246,8 +239,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               showSnackBar(context, 'Passwords do not match');
                             }
                           } else {
-                            showSnackBar(
-                                context, 'Please fill all required fields');
+                            showSnackBar(context, 'Please fill all required fields');
                           }
                         },
                         child: MyRoundedCstBtn(text: 'Create Account'),
@@ -259,8 +251,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'I have an account? ',
+                    Text('I have an account? ',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: AppDimension.font15),
@@ -268,8 +259,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     GestureDetector(
                       onTap: () =>
                           Navigator.pushNamed(context, AppRoutes.loginPage),
-                      child: Text(
-                        'Login Now',
+                      child: Text('Login Now',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: AppDimension.font15,

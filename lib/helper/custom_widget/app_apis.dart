@@ -13,10 +13,24 @@ class AppApis {
 
   // to return current user
   static get user => auth.currentUser!;
+  static late ChatUserModel me;
 
   // for checking user exits or not?
   static Future<bool> userExist() async {
     return (await firestore.collection('users').doc(user.uid).get()).exists;
+  }
+
+  // store self Info
+  static Future<void> getSelfInfo()async{
+     await firestore.collection('users').doc(user.uid).get().then((user) async {
+
+       if(user.exists){
+         me = ChatUserModel.fromJson(user.data()!);
+       }else{
+        //await createUser().then((value)=>getSelfInfo());
+       }
+
+     });
   }
 
   // for creating a new user
@@ -42,6 +56,12 @@ class AppApis {
       ? '${user.uid}_$id'
       : '${id}_${user.uid}';
 
+  // get all user list
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllUser(){
+    return   firestore.collection('users').where('id',isNotEqualTo: user.uid).snapshots();
+  }
+
   // for getting all messages of a specific conversion from firestore database
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllMessages(
       ChatUserModel chatModel) {
@@ -53,7 +73,6 @@ class AppApis {
   //for sending messages
   static Future<void> sendMessage(ChatUserModel chatModel, String msg) async {
     final time = DateTime.now().millisecondsSinceEpoch.toString();
-
     final ChatModel message = ChatModel(
         toId: chatModel.id,
         msg: msg,
@@ -65,6 +84,17 @@ class AppApis {
     final ref = firestore
         .collection('chat/${getConversationID(chatModel.id)}/messages');
     ref.doc(time).set(message.toJson());
+  }
+  
+  
+  // update profile 
+  
+  static Future<void> updateProfile()async{
+    await   firestore.collection('users').doc(user.uid).update({
+      'name' : me.name,
+      'about' : me.about
+    });
+    
   }
 
   // update readStatusTime

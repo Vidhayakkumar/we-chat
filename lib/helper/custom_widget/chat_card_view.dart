@@ -4,7 +4,6 @@ import 'package:we_chat/helper/custom_widget/app_apis.dart';
 import 'package:we_chat/helper/custom_widget/my_date_util.dart';
 import 'package:we_chat/model/chat_model.dart';
 import 'package:we_chat/model/chat_user_model.dart';
-
 import '../../main.dart';
 
 class ChatCardView extends StatelessWidget {
@@ -19,7 +18,6 @@ class ChatCardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     mq = MediaQuery.of(context).size;
-
     return StreamBuilder(
       stream: AppApis.getLastMessage(userModel),
       builder: (context, snapshot) {
@@ -32,16 +30,14 @@ class ChatCardView extends StatelessWidget {
                 radius: 20,
                 backgroundColor: Colors.blue,
               ),
-              title: Text(
-                userModel.name,
+              title: Text(userModel.name,
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: mq.width * .04,
                 ),
               ),
-              subtitle: Text(
-                userModel.about!,
+              subtitle: Text(userModel.about!,
                 style: TextStyle(fontSize: mq.width * .035),
                 maxLines: 1,
               ),
@@ -70,8 +66,7 @@ class ChatCardView extends StatelessWidget {
                 fontSize: mq.width * .04,
               ),
             ),
-            subtitle: Text(
-              _messages?.msg ?? userModel.about!,
+            subtitle: Text(_messages?.msg ?? userModel.about!,
               style: TextStyle(fontSize: mq.width * .035),
               maxLines: 1,
             ),
